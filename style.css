@@ -1,112 +1,129 @@
+/* === LEYENDA ===
+   🔶 "Ajustar aquí para..." indica las secciones clave que puedes modificar:
+   - Grosor, color, tamaño, velocidad de animación, etc.
+   Cada marcador incluye información sobre el valor por defecto o dónde modificarlo.
+*/
+
 /* === VARIABLES CSS ===
-   Ajusta estas variables para personalizar colores, tamaños y grosores.
+   🔶 Personaliza colores, tamaños y grosores principales
 */
 :root {
-    --background-color: #ffd700; /* Color de fondo */
-    --red-color: #fe3522; /* Color del anillo y círculo rojo */
-    --blue-color: #6ad7b9; /* Color del anillo y círculo azul */
-    --orange-color: #fe8616; /* Color del círculo interno naranja */
+    --background-color: #fddb00; /* 🔶 Color de fondo de la página (Por defecto: #fddb00) */
+    --red-color: #e43c2f; /* 🔶 Color del anillo y planeta rojo (Por defecto: #e43c2f) */
+    --blue-color: #69cdb3; /* 🔶 Color del anillo y planeta azul (Por defecto: #69cdb3) */
+    --orange-color: #fe8616; /* 🔶 Color del círculo interno naranja (Por defecto: #fe8616) */
 
-    --ring-size: 50vmin; /* Tamaño base del contenedor de los anillos */
+    --ring-size: 50vmin; /* 🔶 Tamaño total de las órbitas (Por defecto: 50vmin) */
 
-    /* Personaliza el grosor de los anillos */
-    --red-ring-thickness: calc(var(--ring-size) * 0.019); 
-    --blue-ring-thickness: calc(var(--ring-size) * 0.026); 
-    --orange-circle-thickness: calc(var(--ring-size) * 0.08); 
+    /* Grosor de los anillos */
+    --red-ring-thickness: calc(var(--ring-size) * 0.019); /* 🔶 Grosor del anillo rojo (Por defecto: 1.9% del tamaño total) */
+    --blue-ring-thickness: calc(var(--ring-size) * 0.026); /* 🔶 Grosor del anillo azul (Por defecto: 2.6% del tamaño total) */
+    --orange-circle-thickness: calc(var(--ring-size) * 0.08); /* 🔶 Grosor del círculo naranja (Por defecto: 8% del tamaño total) */
 
-    /* Tamaño de los círculos giratorios */
-    --small-red-circle-size: calc(var(--ring-size) * 0.12); 
-    --small-blue-circle-size: calc(var(--ring-size) * 0.09); 
+    /* Tamaño de los planetas */
+    --small-red-circle-size: calc(var(--ring-size) * 0.12); /* 🔶 Tamaño del planeta rojo (Por defecto: 12% del tamaño total) */
+    --small-blue-circle-size: calc(var(--ring-size) * 0.09); /* 🔶 Tamaño del planeta azul (Por defecto: 9% del tamaño total) */
 }
 
 /* === ESTILO GLOBAL === */
 body {
     margin: 0;
-    background-color: var(--background-color); /* Color de fondo principal */
-    overflow: hidden; /* Evita desbordes del contenido */
+    background-color: var(--background-color); /* 🔶 Color de fondo (Definido en :root) */
+    overflow: hidden;
 }
 
-/* Fija la animación como fondo de toda la página */
+/* === CONFIGURACIÓN DE ANIMACIÓN DE FONDO === */
 .background-animation {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    overflow: hidden;
-    z-index: -1; /* Detrás del contenido principal */
+    z-index: -1;
 }
 
-/* Tamaño y posición del contenedor de los anillos */
+/* === CONFIGURACIÓN DEL CONTENEDOR === */
 .container {
     position: relative;
-    width: var(--ring-size);
+    width: var(--ring-size); /* 🔶 Tamaño del contenedor de las órbitas (Definido en :root) */
     height: var(--ring-size);
     display: flex;
     justify-content: center;
-    align-items: center; /* Centra los anillos */
+    align-items: center;
 }
 
-/* === ANILLOS GIRATORIOS === */
+/* === CONTENEDORES DE ÓRBITA === */
+.orbit {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    animation: scale 5s ease-in-out infinite; /* 🔶 Duración del efecto de escalado (Por defecto: 5s) */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.red-orbit {
+    animation-duration: 5s; /* 🔶 Duración del efecto del anillo rojo (Por defecto: 5s) */
+    z-index: 2; /* 🔶 Posición del anillo rojo sobre el azul (Por defecto: 2) */
+}
+
+.blue-orbit {
+    animation-duration: 7s; /* 🔶 Duración del efecto del anillo azul (Por defecto: 7s) */
+    z-index: 1; /* 🔶 Posición del anillo azul debajo del rojo (Por defecto: 1) */
+}
+
+/* === ANILLOS === */
 .ring {
     position: absolute;
-    border-radius: 50%; /* Forma circular */
-    animation: rotate 10s linear infinite; /* Rotación continua */
-    transform-origin: center; /* Punto de giro central */
+    border-radius: 50%;
+    animation: rotate 10s linear infinite;
 }
 
-/* Personaliza el anillo rojo */
 .red-ring {
-    width: 68%; /* Tamaño del anillo rojo */
+    width: 68%; /* 🔶 Tamaño del anillo rojo (Por defecto: 68%) */
     height: 68%;
-    border: var(--red-ring-thickness) solid var(--red-color);
-    animation-duration: 17s; /* Velocidad de giro */
-    z-index: 2; /* Aparece encima del azul */
+    border: var(--red-ring-thickness) solid var(--red-color); /* 🔶 Grosor y color del anillo rojo (Definido en :root) */
+    animation-duration: 17s; /* 🔶 Velocidad de giro del anillo rojo (Por defecto: 17s) */
 }
 
-/* Personaliza el anillo azul */
 .blue-ring {
-    width: 53%; /* Tamaño del anillo azul */
+    width: 53%; /* 🔶 Tamaño del anillo azul (Por defecto: 53%) */
     height: 53%;
-    border: var(--blue-ring-thickness) solid var(--blue-color);
-    animation-duration: 58s; /* Velocidad de giro */
-    animation-direction: reverse; /* Gira en sentido opuesto */
-    z-index: 1; /* Aparece debajo del rojo */
+    border: var(--blue-ring-thickness) solid var(--blue-color); /* 🔶 Grosor y color del anillo azul (Definido en :root) */
+    animation: rotate 58s linear infinite reverse; /* 🔶 Velocidad y dirección del giro del anillo azul (Por defecto: 58s, inverso) */
 }
 
-/* === CÍRCULO INTERNO NARANJA === */
-.inner-circle {
-    width: 23%; /* Tamaño del círculo naranja */
-    height: 23%;
-    border: var(--orange-circle-thickness) solid var(--orange-color);
-    border-radius: 50%; /* Circular */
-    background: transparent;
-}
-
-/* === CÍRCULOS GIRATORIOS === */
+/* === PLANETAS (CÍRCULOS GIRATORIOS) === */
 .small-circle {
     position: absolute;
-    border-radius: 50%; /* Forma circular */
+    border-radius: 50%; /* Los planetas son circulares */
 }
 
-/* Círculo rojo */
 .red-circle {
-    width: var(--small-red-circle-size);
+    width: var(--small-red-circle-size); /* 🔶 Tamaño del planeta rojo (Definido en :root) */
     height: var(--small-red-circle-size);
     top: 50%;
     left: calc(100% + var(--red-ring-thickness) / 2);
     transform: translate(-50%, -50%);
-    background-color: var(--red-color);
+    background-color: var(--red-color); /* 🔶 Color del planeta rojo (Definido en :root) */
 }
 
-/* Círculo azul */
 .blue-circle {
-    width: var(--small-blue-circle-size);
+    width: var(--small-blue-circle-size); /* 🔶 Tamaño del planeta azul (Definido en :root) */
     height: var(--small-blue-circle-size);
     top: 50%;
     left: calc(100% + var(--blue-ring-thickness) / 2);
     transform: translate(-50%, -50%);
-    background-color: var(--blue-color);
+    background-color: var(--blue-color); /* 🔶 Color del planeta azul (Definido en :root) */
+}
+
+/* === CÍRCULO INTERNO NARANJA === */
+.inner-circle {
+    width: 23%; /* 🔶 Tamaño del círculo central (Por defecto: 23%) */
+    height: 23%;
+    border: var(--orange-circle-thickness) solid var(--orange-color); /* 🔶 Grosor y color del círculo interno (Definido en :root) */
+    border-radius: 50%;
 }
 
 /* === ANIMACIONES === */
@@ -119,15 +136,27 @@ body {
     }
 }
 
-/* === RESPONSIVIDAD === */
+@keyframes scale {
+    0%, 100% {
+        transform: scale(1); /* 🔶 Valor de escala inicial y final (Por defecto: 1) */
+    }
+    50% {
+        transform: scale(1.3); /* 🔶 Factor de escalado máximo (Por defecto: 1.3, es decir, un aumento del 30%) */
+    }
+    /* 🔶 Para eliminar el efecto de escalado, comenta o elimina la propiedad 'animation: scale' en las órbitas */
+}
+
+/* === RESPONSIVIDAD ===
+   🔶 Ajusta tamaños automáticamente para pantallas más pequeñas
+*/
 @media (max-width: 768px) {
     :root {
-        --ring-size: 70vmin; /* Tamaño para pantallas medianas */
+        --ring-size: 70vmin; /* 🔶 Tamaño del contenedor para pantallas medianas (Por defecto: 70vmin) */
     }
 }
 
 @media (max-width: 480px) {
     :root {
-        --ring-size: 90vmin; /* Tamaño para pantallas pequeñas */
+        --ring-size: 90vmin; /* 🔶 Tamaño del contenedor para pantallas pequeñas (Por defecto: 90vmin) */
     }
 }
