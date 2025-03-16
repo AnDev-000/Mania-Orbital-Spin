@@ -11,7 +11,7 @@
 
 ## 🌐 Vista previa
 
-🔍 ![Vista previa de la animación](assets/gifs/Mania-Orbital-Spin.gif)
+🔍 ![Vista previa de la animación](assets/gifs/Mania_Orbital_Spin.gif)
 
 ## 🖱️ Ver en acción
 
