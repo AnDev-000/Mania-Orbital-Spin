@@ -11,9 +11,9 @@
 
 ## 🌐 Vista previa
 
-![Vista previa de la animación](assets/gifs/Mania-Orbital-Spin.gif)
+🔍 ![Vista previa de la animación](assets/gifs/Mania-Orbital-Spin.gif)
 
-## 🌐 Demo en vivo
+## 🖱️ Ver en acción
 
 🔗 [Ver animación en acción](https://andev-000.github.io/Mania-Orbital-Spin/)
 
