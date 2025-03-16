@@ -1,0 +1,133 @@
+/* === VARIABLES CSS ===
+   Ajusta estas variables para personalizar colores, tamaños y grosores.
+*/
+:root {
+    --background-color: #ffd700; /* Color de fondo */
+    --red-color: #fe3522; /* Color del anillo y círculo rojo */
+    --blue-color: #6ad7b9; /* Color del anillo y círculo azul */
+    --orange-color: #fe8616; /* Color del círculo interno naranja */
+
+    --ring-size: 50vmin; /* Tamaño base del contenedor de los anillos */
+
+    /* Personaliza el grosor de los anillos */
+    --red-ring-thickness: calc(var(--ring-size) * 0.019); 
+    --blue-ring-thickness: calc(var(--ring-size) * 0.026); 
+    --orange-circle-thickness: calc(var(--ring-size) * 0.08); 
+
+    /* Tamaño de los círculos giratorios */
+    --small-red-circle-size: calc(var(--ring-size) * 0.12); 
+    --small-blue-circle-size: calc(var(--ring-size) * 0.09); 
+}
+
+/* === ESTILO GLOBAL === */
+body {
+    margin: 0;
+    background-color: var(--background-color); /* Color de fondo principal */
+    overflow: hidden; /* Evita desbordes del contenido */
+}
+
+/* Fija la animación como fondo de toda la página */
+.background-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1; /* Detrás del contenido principal */
+}
+
+/* Tamaño y posición del contenedor de los anillos */
+.container {
+    position: relative;
+    width: var(--ring-size);
+    height: var(--ring-size);
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Centra los anillos */
+}
+
+/* === ANILLOS GIRATORIOS === */
+.ring {
+    position: absolute;
+    border-radius: 50%; /* Forma circular */
+    animation: rotate 10s linear infinite; /* Rotación continua */
+    transform-origin: center; /* Punto de giro central */
+}
+
+/* Personaliza el anillo rojo */
+.red-ring {
+    width: 68%; /* Tamaño del anillo rojo */
+    height: 68%;
+    border: var(--red-ring-thickness) solid var(--red-color);
+    animation-duration: 17s; /* Velocidad de giro */
+    z-index: 2; /* Aparece encima del azul */
+}
+
+/* Personaliza el anillo azul */
+.blue-ring {
+    width: 53%; /* Tamaño del anillo azul */
+    height: 53%;
+    border: var(--blue-ring-thickness) solid var(--blue-color);
+    animation-duration: 58s; /* Velocidad de giro */
+    animation-direction: reverse; /* Gira en sentido opuesto */
+    z-index: 1; /* Aparece debajo del rojo */
+}
+
+/* === CÍRCULO INTERNO NARANJA === */
+.inner-circle {
+    width: 23%; /* Tamaño del círculo naranja */
+    height: 23%;
+    border: var(--orange-circle-thickness) solid var(--orange-color);
+    border-radius: 50%; /* Circular */
+    background: transparent;
+}
+
+/* === CÍRCULOS GIRATORIOS === */
+.small-circle {
+    position: absolute;
+    border-radius: 50%; /* Forma circular */
+}
+
+/* Círculo rojo */
+.red-circle {
+    width: var(--small-red-circle-size);
+    height: var(--small-red-circle-size);
+    top: 50%;
+    left: calc(100% + var(--red-ring-thickness) / 2);
+    transform: translate(-50%, -50%);
+    background-color: var(--red-color);
+}
+
+/* Círculo azul */
+.blue-circle {
+    width: var(--small-blue-circle-size);
+    height: var(--small-blue-circle-size);
+    top: 50%;
+    left: calc(100% + var(--blue-ring-thickness) / 2);
+    transform: translate(-50%, -50%);
+    background-color: var(--blue-color);
+}
+
+/* === ANIMACIONES === */
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* === RESPONSIVIDAD === */
+@media (max-width: 768px) {
+    :root {
+        --ring-size: 70vmin; /* Tamaño para pantallas medianas */
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --ring-size: 90vmin; /* Tamaño para pantallas pequeñas */
+    }
+}
