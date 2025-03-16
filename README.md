@@ -1,6 +1,6 @@
 # 🎮 Mania Orbital Spin
 
-**Mania Orbital Spin** es una animación de anillos giratorios inspirada en el menú de *Sonic Mania Plus*, diseñada para ser personalizable y adaptable a páginas web modernas. Este proyecto está disponible para que cualquiera lo use o modifique según sus necesidades.
+**Mania Orbital Spin** es una animación de anillos giratorios inspirada en el menú principal de *Sonic Mania Plus*. Mientras disfrutaba del juego, su estilo artístico me fascinó, especialmente el diseño del fondo, y decidí recrearlo como un proyecto web. Este diseño no solo es adaptable y personalizable, sino que también está disponible como un recurso abierto para que cualquiera lo utilice o modifique según sus necesidades.
 
 ## 🌀 Características
 
@@ -8,6 +8,10 @@
 ✔️ Diseño responsivo adaptable a diferentes tamaños de pantalla.  
 ✔️ Personalización sencilla mediante variables CSS.  
 ✔️ Código limpio y modular para fácil integración.  
+
+## 🌐 Demo en vivo
+
+🔗 [Ver animación en acción](https://andev-000.github.io/Mania-Orbital-Spin/)
 
 ## 🚀 Cómo usarlo
 
@@ -44,9 +48,9 @@ Para cambiar la velocidad de los anillos, edita las animaciones en `style.css`:
 
 ## 📄 Licencia
 
-Este proyecto está disponible bajo la [Licencia MIT](LICENSE), lo que significa que puedes usarlo, modificarlo y compartirlo libremente.
+Este proyecto está disponible bajo la [Licencia MIT](https://opensource.org/licenses/MIT), lo que significa que puedes usarlo, modificarlo y compartirlo libremente.
 
 ## ✨ Autor
 
 Creado por [Andres (AnDev-000)](https://github.com/AnDev-000).  
-Si te gusta este proyecto, ¡no dudes en darle una estrella ⭐ en GitHub!  
+Si te gusta este proyecto, ¡no dudes en darle una estrella ⭐ en GitHub!
